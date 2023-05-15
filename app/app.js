@@ -5,9 +5,9 @@
 var express = require('express');
 var app = express();
 
-// Respond to requests for / with 'Hello Moringa Students'.
+// Respond to requests for / with 'Hello from Zaquir Maina DevOps'.
 app.get('/', function(req, res){
-    res.send('Hello Moringa Students!');
+    res.send('Hello Zaquir Maina DevOps!!');
 });
 
 // Listen on port 80 (like a true web server).
