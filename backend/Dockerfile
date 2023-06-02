@@ -1,24 +1,17 @@
-FROM python:3.9-slim-buster
+FROM node:20.0.0-alpine3.16 as build
 
+WORKDIR /usr/src/yolo-back
 
-WORKDIR /usr/src/yolo
+COPY package*.json ./
 
+RUN npm ci
 
-COPY requirements.txt ./
+COPY . ./
 
+FROM node:20.0.0-alpine3.16
 
-RUN pip install --no-cache-dir -r requirements.txt
-
-
-COPY . .
-
-
-ENV PORT=5000
-ENV MONGODB_URI=mongodb://mongo_db:27017
-ENV DB_NAME=yolomy
-
+COPY --from=build /usr/src/yolo-back /
 
 EXPOSE 5000
 
-
-CMD [ "python", "app.py" ]
+CMD [ "npm", "start" ]

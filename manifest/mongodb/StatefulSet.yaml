@@ -1,0 +1,39 @@
+---
+  apiVersion: "apps/v1"
+  kind: "StatefulSet"
+  metadata: 
+    name: "mongo-db"
+    namespace: "development"
+  spec:
+    serviceName: "mongo-db" 
+    replicas: 1
+    selector: 
+      matchLabels: 
+        app: "mongo-db"
+    template: 
+      metadata: 
+        labels: 
+          app: "mongo-db"
+      spec: 
+        containers: 
+          - name: "mongo-db"
+            image: "mongo:4.4.21"
+            imagePullPolicy: "Always"
+
+            env:
+              - name: MONGO_DB
+                value: yolomy
+                
+            ports: 
+              - containerPort: 27017
+                
+            volumeMounts: 
+              - name: "mongodb-persistent-storage"
+                mountPath: "/etc/data/db"
+        priorityClassName: "high-priority"
+                
+        volumes: 
+          - 
+            name: "mongodb-persistent-storage"
+            persistentVolumeClaim: 
+              claimName: "mongodb-pvc"

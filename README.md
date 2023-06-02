@@ -1,8 +1,23 @@
-# Ansible Playbook Demo Virtual Machine
-This project spins up a VM and demonstrates a very simple local Node.js environment.
+# Requirements
+Make sure that you have the following installed:
+- [node](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04) 
+- npm 
+- [MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/) and start the mongodb service with `sudo service mongod start`
 
-It will install and run a Node.js and Express application on top of a linux CentOS 7 operating system virual machine.
+## Navigate to the Client Folder 
+ `cd client`
 
-## Prerequisites
-- [Vagrant (VirtualBox)](http://www.vagrantup.com/downloads.html) 
-- [Ansible (Mac & Linux)](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html) 
+## Run the folllowing command to install the dependencies 
+ `npm install`
+
+## Run the folllowing to start the app
+ `npm start`
+
+## Open a new terminal and run the same commands in the backend folder
+ `cd ../backend`
+
+ `npm install`
+
+ `npm start`
+
+ ### Go ahead a nd add a product (note that the price field only takes a numeric input)
